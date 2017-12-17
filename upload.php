@@ -31,7 +31,7 @@ if ($uploadOk == 0) {
 
 //if ($readyToGo == 1) {
 $ch = curl_init("http://localhost:8081/?http://localhost/analiz_IT/uploads/test.docx");
-$fp = fopen("uploads/example_homepage.txt", "w");
+$fp = fopen("uploads/result.txt", "w");
 
 curl_setopt($ch, CURLOPT_FILE, $fp);
 curl_setopt($ch, CURLOPT_HEADER, 0);
