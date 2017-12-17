@@ -7,7 +7,13 @@ class GetHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         parsed_request = urlparse(self.path)
-        print('>>> %s ' % parsed_request.query)
+        parsed_url = parsed_request.query
+        print('>>> %s ' % parsed_url)
+        with urllib.request.urlopen(parsed_url) as response:
+            data = response.read() # a `bytes` object
+        req = urllib.request.urlopen(parsed_url)
+        print('>>>>>> %s ' % req)
+        print('>>>>>>>>>>>> %s ' % data) 
         #download
         #message = referat()
         #file_name, headers = urllib.request.urlretrieve(parsed_request.params)
