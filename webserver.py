@@ -11,12 +11,8 @@ class GetHandler(BaseHTTPRequestHandler):
         print('>>> %s ' % parsed_url)
         with urllib.request.urlopen(parsed_url) as response:
             data = response.read() # a `bytes` object
-        req = urllib.request.urlopen(parsed_url)
-        print('>>>>>> %s ' % req)
-        print('>>>>>>>>>>>> %s ' % data) 
-        #download
+        #print('>>>>>>>>>>>>>>> %s ' % data)
         #message = referat()
-        #file_name, headers = urllib.request.urlretrieve(parsed_request.params)
         message = 'Hello world'
         self.send_response(200)
         self.send_header('Content-Type',
