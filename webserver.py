@@ -1,6 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
-import urllib.request 
+import urllib.request
+import makereferat
+import re
 
 
 class GetHandler(BaseHTTPRequestHandler):
@@ -8,12 +10,11 @@ class GetHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed_request = urlparse(self.path)
         parsed_url = parsed_request.query
-        print('>>> %s ' % parsed_url)
-        with urllib.request.urlopen(parsed_url) as response:
-            data = response.read() # a `bytes` object
-        #print('>>>>>>>>>>>>>>> %s ' % data)
-        #message = referat()
-        message = 'Hello world'
+        #print('>>> %s ' % parsed_url)
+        chibap = re.split('/', parsed_url)
+        #with urllib.request.urlopen(parsed_url) as response:
+            #data = response.read() # a `bytes` object
+        message = makereferat.create_referat(chibap)
         self.send_response(200)
         self.send_header('Content-Type',
                          'text/plain; charset=utf-8')

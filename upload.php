@@ -41,6 +41,7 @@ if ($readyToGo == 1) {
     curl_exec($ch);
     curl_close($ch);
     fclose($fp);
+    header("location: http://localhost/analiz_IT/uploads/result.txt");
 }
 function translit($s) {
   $s = (string) $s; // преобразуем в строковое значение
